@@ -5,11 +5,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Opera-Weather</title>
-    <link rel="alternate" href="style.css" type="application/atom+xml" title="Atom">
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-    <h1>Opera-Weather</h1>
+
+    <body>
+        <main class="main-container">
+            <!--start-1-header-section -->
+            <div class="header">
+                <div class="logo">Opera-Weather</div>
+                <input class="search-input" type="text" id="searchInput" placeholder="Search for a city">
+                <div class="-current-location" id="location">Current Location</div>
+            </div>
+            <!--end-1-header-section -->
+            <!-- start-2-weather-section -->
+            <div class="weather-section">
+                <div class="left-panel"></div>
+                <div class="right-panel"></div>
+            </div>
+            <!-- end-2-weather-section -->
+            <!-- start-3-footer -->
+            <div class="footer">
+                Opera-Weather &copy; All rights reserved 2025.
+            </div>
+            <!-- end-3-footer -->
+        </main>
+    </body>
     <!-- <script src="script.js"></script> -->
     <script src="interact.js"></script>
 </body>
