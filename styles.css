@@ -29,21 +29,64 @@ body {
 .header {
     padding: 10px;
     background-color: transparent;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .logo h1 {
-    font-size: 2.5rem;
+    font-size: 1.5rem;
     font-family: var(--body-font);
     color: var(--primary-color);
     font-weight: 700;
+}
+
+#search-button {
+    padding: 0.5rem 1rem;
+    border: 1px solid #CBD5E0;
+    color: var(--primary-color);
+    border-radius: 12px;
+    font-size: 16px;
+    flex: 1;
+    transition: all 0.3s ease;
+}
+
+#search-button:hover {
+    outline: none;
+    border-color: #00AEEF;
+    box-shadow: 0 0 0 3px #C3ECFF;
+}
+
+#current-location-button {
+    background-color: #00AEEF;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    font-family: var(--body-font);
+}
+
+#current-location-button:hover {
+    background-color: #008ECC;
+    transform: scale(1.05);
 }
 
 /*******************************/
 /*****2.Weather-section-lg******/
 /*******************************/
 .weather {
+    padding: 10px;
     background-color: #FFFFFF;
     border-radius: 10px;
+    display: grid;
+    grid-template-columns: 40% 60%;
 }
 
 /*******************************/
