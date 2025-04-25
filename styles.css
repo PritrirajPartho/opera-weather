@@ -10,11 +10,14 @@
     --font-base: 16px;
     --primary-color: #1A2E4F;
     --secondary-color: #4F6A85;
+    --white: #FFFFFF;
 }
 
 body {
     background-color: #E8F0F8;
     height: 100vh;
+    font-family: var(--body-font);
+    color: var(--primary-color);
     animation: fadeIn 2s ease-in-out;
 }
 
@@ -28,28 +31,43 @@ body {
 /*****1.Header-section-lg*******/
 /*******************************/
 .header {
+    margin-top: 20px;
+    margin-bottom: 50px;
     padding: 10px;
     background-color: transparent;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
+    animation: slideDown 2s ease;
 }
 
 .logo h1 {
     font-size: 1.5rem;
-    font-family: var(--body-font);
-    color: var(--primary-color);
     font-weight: 700;
+}
+
+.search-input {
+    padding: 0.5rem 1rem;
+    border: 1px solid #CBD5E0;
+    border-radius: 12px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.search-input:focus {
+    box-shadow: 0 0 0 3px #C3ECFF;
+    outline: none;
 }
 
 #search-button {
     padding: 0.5rem 1rem;
     border: 1px solid #CBD5E0;
-    color: var(--primary-color);
     border-radius: 12px;
     font-size: 16px;
     flex: 1;
     transition: all 0.3s ease;
+    cursor: pointer;
 }
 
 #search-button:hover {
@@ -60,7 +78,7 @@ body {
 
 #current-location-button {
     background-color: #00AEEF;
-    color: white;
+    color: var(--white);
     border: none;
     padding: 0.5rem 1rem;
     border-radius: 12px;
@@ -71,7 +89,6 @@ body {
     gap: 0.5rem;
     transition: all 0.2s ease;
     cursor: pointer;
-    font-family: var(--body-font);
 }
 
 #current-location-button:hover {
@@ -100,10 +117,8 @@ body {
 .footer p {
     font-size: 14px;
     font-weight: 400;
-    font-family: var(--body-font);
     text-align: center;
     padding: 40px 0;
-    color: var(--primary-color);
 }
 
 /* css more animation-making */
