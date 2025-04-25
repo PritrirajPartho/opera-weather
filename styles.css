@@ -4,15 +4,60 @@
     box-sizing: border-box;
 }
 
-h1 {
-    text-align: left;
-    color: #fff;
+/* css variables */
+:root {
+    --body-font: "Inter", sans-serif;
+    --font-base: 16px;
+    --primary-color: #1A2E4F;
+    --secondary-color: #4F6A85;
 }
 
-.container {
-    background-image: url("./images/rain.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
+body {
+    background-color: #E8F0F8;
     height: 100vh;
+}
+
+.main-container {
+    max-width: 1350px;
+    margin: auto;
+    padding: 0px 20px;
+}
+
+/*******************************/
+/*****1.Header-section-lg*******/
+/*******************************/
+.header {
+    padding: 10px;
+    background-color: transparent;
+}
+
+.logo h1 {
+    font-size: 2.5rem;
+    font-family: var(--body-font);
+    color: var(--primary-color);
+    font-weight: 700;
+}
+
+/*******************************/
+/*****2.Weather-section-lg******/
+/*******************************/
+.weather {
+    background-color: #FFFFFF;
+    border-radius: 10px;
+}
+
+/*******************************/
+/*****3.Footer-section-lg*******/
+/*******************************/
+.footer {
+    background-color: transparent;
+}
+
+.footer p {
+    font-size: 14px;
+    font-weight: 400;
+    font-family: var(--body-font);
+    text-align: center;
+    padding: 40px 0;
+    color: var(--primary-color);
 }
