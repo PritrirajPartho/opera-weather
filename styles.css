@@ -87,7 +87,7 @@ body {
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    transition: all 0.2s ease;
+    transition: all 0.3s ease;
     cursor: pointer;
 }
 
@@ -101,10 +101,27 @@ body {
 /*******************************/
 .weather {
     padding: 10px;
-    background-color: #FFFFFF;
-    border-radius: 10px;
+    background-color: var(--white);
+    border-radius: 20px;
     display: grid;
-    grid-template-columns: 40% 60%;
+    grid-template-columns: 30% 70%;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    animation: fadeInUp 1s ease-in-out;
+}
+
+.right-panel {
+    background-color: #D0E7F5;
+    padding: 1rem;
+    border-radius: 16px;
+    animation: scaleIn 1s ease-in-out;
+}
+
+.left-panel h1,
+.right-panel h1 {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    animation: pulse 2s infinite ease-in-out;
 }
 
 /*******************************/
