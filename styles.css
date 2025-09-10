@@ -6,11 +6,15 @@
 
 /* css variables */
 :root {
+    --bg-body: #E8F0F8;
+    --weather-right-panel: #D0E7F5;
     --body-font: "Inter", sans-serif;
     --font-base: 16px;
     --primary-color: #1A2E4F;
     --secondary-color: #4F6A85;
     --white: #FFFFFF;
+    --accent-color: #00AEEF;
+    --alert-color: #FF6B6B;
 }
 
 body {
