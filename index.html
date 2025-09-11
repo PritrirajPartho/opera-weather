@@ -12,6 +12,9 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
         rel="stylesheet">
+    <!-- Font Awesome icons -->
+    <script src="https://kit.fontawesome.com/c36d5caf68.js" crossorigin="anonymous"></script>
+
 </head>
 
 <body>
@@ -25,10 +28,12 @@
                 </div>
                 <div>
                     <input class="search-input" type="text" id="searchInput" placeholder="Search for a city">
-                    <button type="button" id="search-button" class="search-button">Search</button>
+                    <button type="button" id="search-button" class="search-button"><i
+                            class="fa-brands fa-searchengin"></i> Search</button>
                 </div>
                 <div class="current-location" id="location">
-                    <button type="button" id="current-location-button" class="current-location-button">Current
+                    <button type="button" id="current-location-button" class="current-location-button"><i
+                            class="fa-solid fa-location-crosshairs"></i> Current
                         Location</button>
                 </div>
             </div>
@@ -36,8 +41,14 @@
             <!-- start-2-weather-section -->
             <div class="weather">
                 <div class="left-panel">
-                    <h1 id="city">City Title</h1>
+                    <h1 id="city">London, United Kingdom</h1>
+                    <div class="temperature-data">
+                        <h1 id="temperature">23°C</h1>
+                        <i class="fa-solid fa-cloud"></i>
+                    </div>
+                    <p>Today you can expect ${"rainy day"}</p>
                 </div>
+
                 <div class="right-panel">
                     <h1 id="temperature">Temperature</h1>
                 </div>

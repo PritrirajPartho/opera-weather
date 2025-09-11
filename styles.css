@@ -44,6 +44,7 @@ body {
     justify-content: space-between;
     align-items: center;
     animation: slideDown 2s ease;
+    background-color: var(--accent-color);
 }
 
 .logo h1 {
@@ -108,9 +109,10 @@ body {
     background-color: var(--white);
     border-radius: 20px;
     display: grid;
-    grid-template-columns: 30% 70%;
+    grid-template-columns: 40% 60%;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     animation: fadeInUp 1s ease-in-out;
+    border: 5px solid red;
 }
 
 .right-panel {
@@ -120,19 +122,49 @@ body {
     animation: scaleIn 1s ease-in-out;
 }
 
+.left-panel {
+    text-align: center;
+}
+
 .left-panel h1,
 .right-panel h1 {
-    font-size: 1rem;
+    font-size: 1.5rem;
     font-weight: 700;
-    margin-bottom: 10px;
     animation: pulse 2s infinite ease-in-out;
+}
+
+.left-panel h2,
+.right-panel h2 {
+    font-size: 0.8rem;
+    font-weight: 700;
+    animation: pulse 2s infinite ease-in-out;
+}
+
+.temperature-data {
+    display: flex;
+    gap: 0px 50px;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0px;
+}
+
+.temperature-data h1 {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.temperature-data i {
+    font-size: 2rem;
+    color: var(--accent-color);
 }
 
 /*******************************/
 /*****3.Footer-section-lg*******/
 /*******************************/
 .footer {
+    margin-top: 50px;
     background-color: transparent;
+    border: 2px solid black;
 }
 
 .footer p {

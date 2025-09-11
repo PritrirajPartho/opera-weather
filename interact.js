@@ -11,31 +11,10 @@ const temperatureTitle = document.getElementById('temperature');
 const weatherContainer = document.querySelector('.weather');
 const rightPanel = document.querySelector('.right-panel');
 
-async function getWeather(city) {
-  try {
-      const weatherResponse = await fetch(
-          `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`
-      );
-      const forecastResponse = await fetch(
-          `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric`
-      );
-
-      if (!weatherResponse.ok || !forecastResponse.ok) {
-          throw new Error('City not found. Please try again.');
-      }
-
-      const weatherData = await weatherResponse.json();
-      const forecastData = await forecastResponse.json();
-      console.log(forecastData);
-      console.log(weatherData);
-
-      updateWeather(weatherData, forecastData);
-  } catch (error) {
-      showError(error.message);
-  }
+async function getWeater(){
+    let city = searchInput.value.trim().toLowerCase();
+    console.log(city);
+    searchInput.value = "";
 }
-// fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`)
-//   .then(response => response.json())
-//   .then(data => {
-//     console.log(data);
-//   });
+
+searchButton.addEventListener('click', getWeater);
