@@ -7,14 +7,20 @@ const searchButton = document.getElementById('search-button');
 const searchInput = document.getElementById('searchInput');
 const currentLocationButton = document.getElementById('current-location-button');
 const cityTitle = document.getElementById('city');
-const temperatureTitle = document.getElementById('temperature');
 const weatherContainer = document.querySelector('.weather');
 const rightPanel = document.querySelector('.right-panel');
 
 async function getWeater(){
-    let city = searchInput.value.trim().toLowerCase();
-    console.log(city);
+    let cityName = searchInput.value.trim().toLowerCase();
     searchInput.value = "";
+    if(!cityName) return;
+    let geocoding_api_url = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}`;
+    
+    fetch(geocoding_api_url)
+    .then(response => response.json())
+    .then(data =>{
+        console.log(data);
+    })
 }
 
 searchButton.addEventListener('click', getWeater);

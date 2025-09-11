@@ -179,6 +179,13 @@ body {
     margin-bottom: 10px;
 }
 
+.hourly-forecast-container {
+    margin: 20px 0px;
+    display: flex;
+    align-items: center;
+    gap: 0px 40px;
+}
+
 /*******************************/
 /*****3.Footer-section-lg*******/
 /*******************************/
