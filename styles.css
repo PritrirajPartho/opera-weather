@@ -158,6 +158,27 @@ body {
     color: var(--accent-color);
 }
 
+.temparature-card-container {
+    margin: 20px 20px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.temparature-card {
+    text-align: left;
+    padding: 10px;
+    border-radius: 10px;
+    background: slategray;
+}
+
+.temparature-card h1 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
 /*******************************/
 /*****3.Footer-section-lg*******/
 /*******************************/
