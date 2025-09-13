@@ -10,7 +10,14 @@ const cityTitle = document.getElementById('city');
 const weatherContainer = document.querySelector('.weather');
 const rightPanel = document.querySelector('.right-panel');
 
-async function getWeater(){
+
+function getWeatherDetails(name, country, sunrise, sunset, id, icon, description, temp, humidity, pressure, feels_like, temp_min, temp_max, speed, deg, gust, all){  
+    let forcast_api_url = `https://api.openweathermap.org/data/2.5/forecast?q=${name}&appid=${apiKey}`;    
+
+}
+
+
+function getWeather(){
     let cityName = searchInput.value.trim().toLowerCase();
     searchInput.value = "";
     if(!cityName) return;
@@ -19,8 +26,17 @@ async function getWeater(){
     fetch(geocoding_api_url)
     .then(response => response.json())
     .then(data =>{
-        console.log(data);
+        let{name} = data;
+        let{temp, humidity, pressure, feels_like, temp_min, temp_max} = data.main;
+        let{country, sunrise, sunset, id} = data.sys;
+        let{speed, deg, gust} = data.wind;
+        let{main, description, icon} = data.weather[0];
+        let{all} = data.clouds;
+        getWeatherDetails(name, country, sunrise, sunset, id, icon, description, temp, humidity, pressure, feels_like, temp_min, temp_max, speed, deg, gust, all);
+        // let{visibility} = data.visibility;
+        // console.log(visibility);
     })
+    .catch(err => alert(`Something went wrong: ${err}`));
 }
 
-searchButton.addEventListener('click', getWeater);
+searchButton.addEventListener('click', getWeather);
