@@ -12,7 +12,33 @@ const rightPanel = document.querySelector('.right-panel');
 
 
 function getWeatherDetails(name, country, sunrise, sunset, id, icon, description, temp, humidity, pressure, feels_like, temp_min, temp_max, speed, deg, gust, all){  
-    let forcast_api_url = `https://api.openweathermap.org/data/2.5/forecast?q=${name}&appid=${apiKey}`;    
+    let forcast_api_url = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}`;    
+    weather_api_url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}`;  
+    
+    days = [
+        "Sunday",
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday"
+    ]
+
+    months = [
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December"
+    ]
 
 }
 
