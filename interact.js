@@ -41,22 +41,34 @@ function getWeatherDetails( lat, lon){
     fetch(weather_api_url)
     .then(response => response.json())
     .then(data => {
-        let{name} = data;
+        let{name, dt, timezone} = data;
         let{temp, humidity, pressure, feels_like, temp_min, temp_max} = data.main;
         let{country, sunrise, sunset, id} = data.sys;
         let{speed, deg, gust} = data.wind;
-        let{main, description, icon} = data.weather[0]; 
-        console.log(data);   
-        let date = new Date();
+        let{main, description, icon} = data.weather[0];  
+        // date and time conversion
+        let date = new Date((dt + timezone) * 1000);
+        let options = {
+            day: "numeric",
+            month: "long",
+            year: "numeric",
+            weekday: "long"
+        };
+        // Format the date
+        let formattedDate = date.toLocaleDateString("en-GB", options);
+
+        console.log(dt,data, timezone);   
         weatherCard.innerHTML = `  
                 <div class="left-panel">
                     <h1 id="city">${name}, ${country}</h1>
-                    <h2>${days[date.getDay()]}, ${date.getDate()},${months[date.getMonth()]}</h2>
+                    <h2>${formattedDate}</h2>
                     <div class="temperature-data">
                         <h1 id="temperature">${(temp-273.15).toFixed(2)}&deg;C</h1>
-                        <img src="https://openweathermap.org/img/wn/10d@2x.png" alt="Icon" srcset="">
                     </div>
-                    <p>Today you can expect ${"rainy day"}</p>
+                    <p class="weather-description">
+                      <img src="https://openweathermap.org/img/wn/${icon}@2x.png" alt="Icon" srcset="">
+                      ${getWeatherDescription(main, description)}
+                    </p>
                     <div class="temparature-card-container">
                         <div class="temparature-card">
                             <p><i class="fa-solid fa-temperature-three-quarters"></i> Real Feels</p>
@@ -125,3 +137,20 @@ function getWeather(){
 }
 
 searchButton.addEventListener('click', getWeather);
+
+// get weather message to here
+function getWeatherDescription(main, description){
+  if (main === "Clear") {
+    return "It's a clear and sunny day!";
+  } else if (main === "Clouds") {
+    return `The sky is ${description}.`;
+  } else if (main === "Rain") {
+    return `Expect ${description} today, don't forget an umbrella!`;
+  } else if (main === "Snow") {
+    return `It's snowing: ${description}. Stay warm!`;
+  } else if (main === "Thunderstorm") {
+    return "Thunderstorms are expected — stay safe indoors.";
+  } else {
+    return `The weather today is ${description} (${main}).`;
+  }
+}
