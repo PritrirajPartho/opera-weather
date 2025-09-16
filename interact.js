@@ -49,10 +49,10 @@ function getWeatherDetails( lat, lon){
         // date and time conversion
         let date = new Date((dt + timezone) * 1000);
         let options = {
+            weekday: "long",
             day: "numeric",
             month: "long",
             year: "numeric",
-            weekday: "long"
         };
         // Format the date
         let formattedDate = date.toLocaleDateString("en-GB", options);
@@ -72,30 +72,22 @@ function getWeatherDetails( lat, lon){
                     <div class="temparature-card-container">
                         <div class="temparature-card">
                             <p><i class="fa-solid fa-temperature-three-quarters"></i> Real Feels</p>
-                            <h1>30&deg;C</h1>
-                            <p>Humidity make it feels warmer</p>
+                            <h1>${(feels_like-273.15).toFixed(2)}&deg;C</h1>
                         </div>
                         <div class="temparature-card">
                             <p><i class="fa-solid fa-droplet"></i> Humidity</p>
-                            <h1>82%</h1>
-                            <p></p>
+                            <h1>${humidity}%</h1>
                         </div>
                         <div class="temparature-card">
-                            <p><i class="fa-solid fa-fan"></i>
-                                Air Quality</p>
-                            <h1>36</h1>
-                            <p>Air Quality is good.A perfect day for walk!</p>
+                            <p>
+                              <i class="fa-solid fa-fan"></i>
+                              pressure
+                            </p>
+                            <h1>${pressure} hPa</h1>
                         </div>
                         <div class="temparature-card">
                             <p><i class="fa-solid fa-eye"></i> visibility</p>
-                            <h1>6 mig/m3</h1>
-                            <p></p>
-                        </div>
-                        <div class="temparature-card">
-                            <p><i class="fa-solid fa-cloud"></i>
-                                chance of rain</p>
-                            <h1>86%</h1>
-                            <p>could be a rainy day</p>
+                            <h1>${( data.visibility/1000).toFixed(2)} km</h1>
                         </div>
                     </div>
                 </div>
@@ -140,17 +132,17 @@ searchButton.addEventListener('click', getWeather);
 
 // get weather message to here
 function getWeatherDescription(main, description){
-  if (main === "Clear") {
-    return "It's a clear and sunny day!";
-  } else if (main === "Clouds") {
-    return `The sky is ${description}.`;
-  } else if (main === "Rain") {
-    return `Expect ${description} today, don't forget an umbrella!`;
-  } else if (main === "Snow") {
-    return `It's snowing: ${description}. Stay warm!`;
-  } else if (main === "Thunderstorm") {
-    return "Thunderstorms are expected — stay safe indoors.";
-  } else {
-    return `The weather today is ${description} (${main}).`;
-  }
+    if (main === "Clear") {
+        return "It's a clear and sunny day!";
+    } else if (main === "Clouds") {
+        return `The sky is ${description}.`;
+    } else if (main === "Rain") {
+        return `Expect ${description} today, don't forget an umbrella!`;
+    } else if (main === "Snow") {
+        return `It's snowing: ${description}. Stay warm!`;
+    } else if (main === "Thunderstorm") {
+        return "Thunderstorms are expected — stay safe indoors.";
+    } else {
+        return `The weather today is ${description} (${main}).`;
+    }
 }
