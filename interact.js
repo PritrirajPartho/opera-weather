@@ -60,15 +60,15 @@ function getWeatherDetails( lat, lon){
         console.log(dt,data, timezone);   
         weatherCard.innerHTML = `  
                 <div class="left-panel">
-                    <h1 id="city">${name}, ${country}</h1>
-                    <h2>${formattedDate}</h2>
                     <div class="temperature-data">
+                        <h1 id="city">${name}, ${country}</h1>
+                        <h2>${formattedDate}</h2>
                         <h1 id="temperature">${(temp-273.15).toFixed(2)}&deg;C</h1>
+                        <p class="weather-description">
+                            <img src="https://openweathermap.org/img/wn/${icon}@2x.png" alt="Icon" srcset="">
+                           <span> ${getWeatherDescription(main, description)} </span>
+                        </p>
                     </div>
-                    <p class="weather-description">
-                      <img src="https://openweathermap.org/img/wn/${icon}@2x.png" alt="Icon" srcset="">
-                      ${getWeatherDescription(main, description)}
-                    </p>
                     <div class="temparature-card-container">
                         <div class="temparature-card">
                             <p><i class="fa-solid fa-temperature-three-quarters"></i> Real Feels</p>
@@ -80,7 +80,7 @@ function getWeatherDetails( lat, lon){
                         </div>
                         <div class="temparature-card">
                             <p>
-                              <i class="fa-solid fa-fan"></i>
+                              <i class="fa-solid fa-gauge-high"></i>
                               pressure
                             </p>
                             <h1>${pressure} hPa</h1>
