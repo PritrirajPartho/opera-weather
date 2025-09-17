@@ -10,8 +10,10 @@ const forecastCard = document.querySelector('.right-panel');
 
 
 function getWeatherDetails( lat, lon){  
-    let forcast_api_url = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}`;    
-    weather_api_url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}`;  
+
+    let weather_api_url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}`; 
+
+    let forcast_api_url = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}`; 
     
     days = [
         "Sunday",
@@ -38,6 +40,7 @@ function getWeatherDetails( lat, lon){
         "December"
     ]
 
+    // weather api call
     fetch(weather_api_url)
     .then(response => response.json())
     .then(data => {
@@ -46,6 +49,7 @@ function getWeatherDetails( lat, lon){
         let{country, sunrise, sunset, id} = data.sys;
         let{speed, deg, gust} = data.wind;
         let{main, description, icon} = data.weather[0];  
+
         // date and time conversion
         let date = new Date((dt + timezone) * 1000);
         let options = {
@@ -54,10 +58,9 @@ function getWeatherDetails( lat, lon){
             month: "long",
             year: "numeric",
         };
-        // Format the date
+        // Formatted the date
         let formattedDate = date.toLocaleDateString("en-GB", options);
-
-        console.log(dt,data, timezone);   
+        console.log("weather api call",data);
         weatherCard.innerHTML = `  
                 <div class="left-panel">
                     <div class="temperature-data">
@@ -95,20 +98,30 @@ function getWeatherDetails( lat, lon){
     })
     .catch(err => alert(`weather error: ${err}`));
 
-    // fetch forcast
+    // fetch forcast api
     fetch(forcast_api_url)
-    .then(response => response.json())
-    .then(data => {
-         let uniqueForecastDays = [];
-         let fiveDaysForecast = data.list.filter(forecast => {
-             let forecastDate = new Date(forecast.dt_txt).getDate();
-             if(!uniqueForecastDays.includes(forecastDate)){
-                 return uniqueForecastDays.push(forecastDate);
-             }
-         })
-        // console.log(fiveDaysForecast);
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json(); 
     })
-    .catch(err => alert(`forecast error: ${err}`));
+    .then(data => {
+        let fiveDaysForecast = [];
+        let uniqueDays = [];
+
+        data.list.forEach(item => {
+        let day = new Date(item.dt_txt).getDate();
+
+        if (!uniqueDays.includes(day)) {
+            uniqueDays.push(day);
+            fiveDaysForecast.push(item);
+           }
+        });
+
+        console.log(data, fiveDaysForecast);
+    })
+    .catch(err => alert(`forecast error: ${err.message}`));
 
 }
 
@@ -128,20 +141,22 @@ function getWeather(){
     .catch(err => alert(`Something went wrong: ${err}`));
 }
 
+
+// city search button event or callback
 searchButton.addEventListener('click', getWeather);
 
-// get weather message to here
+// get dynamic weather message to here adjust with data
 function getWeatherDescription(main, description){
     if (main === "Clear") {
         return "It's a clear and sunny day!";
     } else if (main === "Clouds") {
-        return `The sky is ${description}.`;
+        return `The sky is cloudy`;
     } else if (main === "Rain") {
         return `Expect ${description} today, don't forget an umbrella!`;
     } else if (main === "Snow") {
         return `It's snowing: ${description}. Stay warm!`;
     } else if (main === "Thunderstorm") {
-        return "Thunderstorms are expected — stay safe indoors.";
+        return "Thunderstorms are expected today, stay safe indoors.";
     } else {
         return `The weather today is ${description} (${main}).`;
     }
