@@ -10,7 +10,7 @@ const forecastCard = document.querySelector('.right-panel');
 const fiveDaysForecastContainer = document.querySelector('.day-based-forecast-container');
 
 
-function getWeatherDetails( lat, lon){  
+function getWeatherDetails(lat, lon, name, country, state){  
 
     let weather_api_url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}`; 
 
@@ -120,7 +120,8 @@ function getWeatherDetails( lat, lon){
             fiveDaysForecast.push(item);
            }
         });
-
+        
+        fiveDaysForecastContainer.innerHTML = "";
         for(let i = 1; i < fiveDaysForecast.length; i++){
             let date = new Date(fiveDaysForecast[i].dt_txt);
             fiveDaysForecastContainer.innerHTML += `
@@ -156,8 +157,32 @@ function getWeather(){
 }
 
 
-// city search button event or callback
+function getCurrentLocation(){
+    navigator.geolocation.getCurrentPosition(position => {
+        let lat = position.coords.latitude;
+        let lon = position.coords.longitude;
+        const revers_geocoding_api_url = `https://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lon}&limit=1&appid=${apiKey}`;
+        fetch(revers_geocoding_api_url)
+        .then(response => response.json())
+        .then(data => {
+          let{lat, lon, name, country, state} = data[0];
+          getWeatherDetails(lat, lon, name, country, state);
+        })
+        .catch(err => alert(`Something went wrong: ${err}`));
+    })
+}
+
+
+
+// all button events or callback
 searchButton.addEventListener('click', getWeather);
+currentLocationButton.addEventListener('click', getCurrentLocation);
+window.addEventListener('load', getCurrentLocation);
+searchInput.addEventListener('keyup', (event) => {
+    if (event.key === "Enter") {
+        getWeather();
+    }
+})
 
 // get dynamic weather message to here adjust with data
 function getWeatherDescription(main, description){
