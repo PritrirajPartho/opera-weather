@@ -202,16 +202,17 @@ body {
 }
 
 .day-based-forecast-container {
+    margin: 20px 0px;
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
-    gap: 0px 20px;
-    margin-top: 20px;
+    gap: 10px;
 }
 
 .day-forecast-card {
     background-color: var(--white);
     padding: 15px;
+    border: 2px solid black;
+    border-radius: 10px;
 }
 
 .day-forecast-data {

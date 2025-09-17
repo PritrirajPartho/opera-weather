@@ -8,7 +8,6 @@ const weatherContainer = document.querySelector('.weather');
 const weatherCard = document.querySelector('.left-panel');
 const forecastCard = document.querySelector('.right-panel');
 const fiveDaysForecastContainer = document.querySelector('.day-based-forecast-container');
-const fiveDaysForecastCard = document.createElement('div');
 
 
 function getWeatherDetails( lat, lon){  
@@ -100,6 +99,7 @@ function getWeatherDetails( lat, lon){
     })
     .catch(err => alert(`weather error: ${err}`));
 
+
     // fetch forcast api
     fetch(forcast_api_url)
     .then(response => {
@@ -121,12 +121,11 @@ function getWeatherDetails( lat, lon){
            }
         });
 
-        // fiveDaysForecastCard.innerHTML = "";
         for(let i = 1; i < fiveDaysForecast.length; i++){
             let date = new Date(fiveDaysForecast[i].dt_txt);
-            fiveDaysForecastCard.innerHTML += `
+            fiveDaysForecastContainer.innerHTML += `
                 <div class="day-forecast-card">
-                    <p>${days[date.getDay()]}, ${date.getDate()}</p>
+                    <p>${date.getDate()} ${months[date.getMonth()]},${days[date.getDay()]}</p>
                     <div class="day-forecast-data">
                         <img src="https://openweathermap.org/img/wn/${fiveDaysForecast[i].weather[0].icon}@2x.png" alt="Icon" srcset="">
                         <h1>${(fiveDaysForecast[i].main.temp-273.15).toFixed(2)}&deg;C</h1>
@@ -135,7 +134,6 @@ function getWeatherDetails( lat, lon){
             `;
         }
 
-        fiveDaysForecastContainer.appendChild(fiveDaysForecastCard);
     })
     .catch(err => alert(`forecast error: ${err.message}`));
 
