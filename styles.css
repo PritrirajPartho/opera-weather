@@ -201,6 +201,33 @@ body {
     border-radius: 50%;
 }
 
+.day-based-forecast-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0px 20px;
+    margin-top: 20px;
+}
+
+.day-forecast-card {
+    background-color: var(--white);
+    padding: 15px;
+}
+
+.day-forecast-data {
+    display: flex;
+    align-items: center;
+    gap: 0px 10px;
+    margin-top: 15px;
+}
+
+.day-forecast-data img {
+    width: 40px;
+    height: 40px;
+    background-color: gainsboro;
+    border-radius: 50%;
+}
+
 /*******************************/
 /*****3.Footer-section-lg*******/
 /*******************************/
