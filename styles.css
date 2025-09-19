@@ -9,10 +9,11 @@
     --bg-body: #E8F0F8;
     --weather-right-panel: #D0E7F5;
     --body-font: "Inter", sans-serif;
+    --heading-font: "Poppins", sans-serif;
     --font-base: 16px;
     --primary-color: #1A2E4F;
     --secondary-color: #4F6A85;
-    --white: #FFFFFF;
+    --white: #ffffff;
     --accent-color: #00AEEF;
     --alert-color: #FF6B6B;
 }
@@ -25,79 +26,82 @@ body {
     animation: fadeIn 2s ease-in-out;
 }
 
-.main-container {
+.box-container {
     max-width: 1350px;
     margin: auto;
-    padding: 0px 20px;
+    padding: 20px 40px;
 }
 
 /*******************************/
 /*****1.Header-section-lg*******/
 /*******************************/
 .header {
-    margin-top: 20px;
     margin-bottom: 50px;
-    padding: 10px;
-    background-color: transparent;
+    background: linear-gradient(to right, #0f172a, #1e3a8a);
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
     animation: slideDown 2s ease;
-    background-color: var(--accent-color);
 }
 
 .logo h1 {
-    font-size: 1.5rem;
+    color: var(--white);
+    font-family: var(--heading-font);
+    font-size: 24px;
     font-weight: 700;
 }
 
 .search-input {
-    padding: 0.5rem 1rem;
-    border: 1px solid #CBD5E0;
+    padding: 8px 10px;
     border-radius: 12px;
-    font-size: 1rem;
+    font-family: var(--heading-font);
+    font-size: 16px;
     transition: all 0.3s ease;
 }
 
 .search-input:focus {
-    box-shadow: 0 0 0 3px #C3ECFF;
+    box-shadow: 0 0 0 3px #077EB0;
     outline: none;
 }
 
 #search-button {
-    padding: 0.5rem 1rem;
-    border: 1px solid #CBD5E0;
-    border-radius: 12px;
+    background-color: #055E85;
+    color: var(--white);
+    font-family: var(--heading-font);
     font-size: 16px;
+    font-weight: 500;
+    padding: 5px 10px;
+    border: 2px solid var(--white);
+    border-radius: 12px;
     flex: 1;
     transition: all 0.3s ease;
     cursor: pointer;
 }
 
 #search-button:hover {
-    outline: none;
-    border-color: #00AEEF;
-    box-shadow: 0 0 0 3px #C3ECFF;
+    background-color: #077EB0;
+    transform: scale(1.05);
 }
 
 #current-location-button {
-    background-color: #00AEEF;
+    background-color: #055E85;
     color: var(--white);
-    border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 12px;
+    font-family: var(--heading-font);
     font-size: 16px;
     font-weight: 500;
+    border: 2px solid var(--white);
+    padding: 5px 10px;
+    border-radius: 12px;
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 8px;
     transition: all 0.3s ease;
     cursor: pointer;
 }
 
 #current-location-button:hover {
-    background-color: #008ECC;
+    background-color: #077EB0;
     transform: scale(1.05);
 }
 
@@ -105,7 +109,6 @@ body {
 /*****2.Weather-section-lg******/
 /*******************************/
 .weather {
-    padding: 10px;
     background-color: var(--white);
     border-radius: 20px;
     display: grid;
