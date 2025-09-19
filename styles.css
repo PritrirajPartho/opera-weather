@@ -183,8 +183,16 @@ body {
 .hourly-forecast-container {
     margin: 20px 0px;
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
-    gap: 0px 40px;
+    gap: 20px;
+}
+
+.hourly-forecast-card {
+    background-color: slategray;
+    padding: 15px;
+    border: 2px solid black;
+    border-radius: 10px;
 }
 
 .weather-description {

@@ -8,6 +8,7 @@ const weatherContainer = document.querySelector('.weather');
 const weatherCard = document.querySelector('.left-panel');
 const forecastCard = document.querySelector('.right-panel');
 const fiveDaysForecastContainer = document.querySelector('.day-based-forecast-container');
+const hourlyForecastContainer = document.querySelector('.hourly-forecast-container');
 
 
 function getWeatherDetails(lat, lon, name, country, state){  
@@ -120,7 +121,26 @@ function getWeatherDetails(lat, lon, name, country, state){
             fiveDaysForecast.push(item);
            }
         });
-        
+
+        // hourly forecast
+        console.log("forecast api call",data);
+        hourlyForecastContainer.innerHTML = "";
+        for (let i = 0; i < 6; i++) {
+            let date = new Date(data.list[i].dt_txt);
+            let hours = date.getHours();
+            let ampm = hours >= 12 ? "PM" : "AM";
+            let formattedTime = `${hours}:00 ${ampm}`;
+
+            hourlyForecastContainer.innerHTML += `
+                <div class="hourly-forecast-card">
+                    <p>${formattedTime}</p>
+                    <img src="https://openweathermap.org/img/wn/${data.list[i].weather[0].icon}@2x.png" alt="Icon">
+                    <h1>${(data.list[i].main.temp - 273.15).toFixed(2)}&deg;C</h1>
+                </div>
+            `;
+        }
+ 
+        // five days forecast
         fiveDaysForecastContainer.innerHTML = "";
         for(let i = 1; i < fiveDaysForecast.length; i++){
             let date = new Date(fiveDaysForecast[i].dt_txt);
