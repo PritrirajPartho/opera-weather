@@ -18,7 +18,7 @@
 }
 
 body {
-    background-color: #E8F0F8;
+    background-color: var(--bg-body);
     height: 100vh;
     font-family: var(--body-font);
     color: var(--primary-color);
