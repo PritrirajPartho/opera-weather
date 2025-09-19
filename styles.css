@@ -195,6 +195,30 @@ body {
     border-radius: 10px;
 }
 
+.hourly-forecast-card h1 {
+    text-align: center;
+}
+
+.hourly-forecast-card p {
+    text-align: center;
+}
+
+.hourly-forecast-data {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0px 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.hourly-forecast-card img {
+    width: 40px;
+    height: 40px;
+    background-color: gainsboro;
+    border-radius: 50%;
+}
+
 .weather-description {
     display: flex;
     justify-content: center;

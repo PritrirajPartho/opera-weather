@@ -1,6 +1,7 @@
-// my local api key is below
+// my openweather api key is below
 const apiKey = "350c92110068b8850f7e74c297509483"; 
-// more html dom elements
+
+// more html dom elements are below
 const searchInput = document.getElementById('searchInput');
 const searchButton = document.getElementById('search-button');
 const currentLocationButton = document.getElementById('current-location-button');
@@ -9,6 +10,8 @@ const weatherCard = document.querySelector('.left-panel');
 const forecastCard = document.querySelector('.right-panel');
 const fiveDaysForecastContainer = document.querySelector('.day-based-forecast-container');
 const hourlyForecastContainer = document.querySelector('.hourly-forecast-container');
+
+
 
 
 function getWeatherDetails(lat, lon, name, country, state){  
@@ -68,7 +71,7 @@ function getWeatherDetails(lat, lon, name, country, state){
                     <div class="temperature-data">
                         <h1 id="city">${name}, ${country}</h1>
                         <h2>${formattedDate}</h2>
-                        <h1 id="temperature">${(temp-273.15).toFixed(2)}&deg;C</h1>
+                        <h1 id="temperature">${Math.round(temp - 273.15)}&deg;C</h1>
                         <p class="weather-description">
                             <img src="https://openweathermap.org/img/wn/${icon}@2x.png" alt="Icon" srcset="">
                            <span> ${getWeatherDescription(main, description)} </span>
@@ -77,7 +80,7 @@ function getWeatherDetails(lat, lon, name, country, state){
                     <div class="temparature-card-container">
                         <div class="temparature-card">
                             <p><i class="fa-solid fa-temperature-three-quarters"></i> Real Feels</p>
-                            <h1>${(feels_like-273.15).toFixed(2)}&deg;C</h1>
+                            <h1>${Math.round(feels_like-273.15)}&deg;C</h1>
                         </div>
                         <div class="temparature-card">
                             <p><i class="fa-solid fa-droplet"></i> Humidity</p>
@@ -123,7 +126,7 @@ function getWeatherDetails(lat, lon, name, country, state){
         });
 
         // hourly forecast
-        console.log("forecast api call",data);
+        console.log(data);
         hourlyForecastContainer.innerHTML = "";
         for (let i = 0; i < 6; i++) {
             let date = new Date(data.list[i].dt_txt);
@@ -134,7 +137,11 @@ function getWeatherDetails(lat, lon, name, country, state){
             hourlyForecastContainer.innerHTML += `
                 <div class="hourly-forecast-card">
                     <p>${formattedTime}</p>
-                    <img src="https://openweathermap.org/img/wn/${data.list[i].weather[0].icon}@2x.png" alt="Icon">
+                    <div class="hourly-forecast-data">
+                        <img src="https://openweathermap.org/img/wn/${data.list[i].weather[0].icon}@2x.png" alt="Icon">
+                        <p>${data.list[i].pop * 100}%</p>
+                    </div>
+                    <p>${data.list[i].wind.speed} km/h</p>
                     <h1>${(data.list[i].main.temp - 273.15).toFixed(2)}&deg;C</h1>
                 </div>
             `;
@@ -181,8 +188,8 @@ function getCurrentLocation(){
     navigator.geolocation.getCurrentPosition(position => {
         let lat = position.coords.latitude;
         let lon = position.coords.longitude;
-        const revers_geocoding_api_url = `https://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lon}&limit=1&appid=${apiKey}`;
-        fetch(revers_geocoding_api_url)
+        const reverse_geocoding_api_url = `https://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lon}&limit=1&appid=${apiKey}`;
+        fetch(reverse_geocoding_api_url)
         .then(response => response.json())
         .then(data => {
           let{lat, lon, name, country, state} = data[0];
