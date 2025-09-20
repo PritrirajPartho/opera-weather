@@ -6,22 +6,21 @@
 
 /* css variables */
 :root {
-    --bg-body: #E8F0F8;
-    --weather-right-panel: #D0E7F5;
-    --body-font: "Inter", sans-serif;
-    --heading-font: "Poppins", sans-serif;
-    --font-base: 16px;
-    --primary-color: #1A2E4F;
-    --secondary-color: #4F6A85;
+    --left-panel-bg: #4a5868;
+    --right-panel-bg: #9bb4c5;
+    --inter-font: "Inter", sans-serif;
+    --poppins-font: "Poppins", sans-serif;
+    --base-font: 16px;
+    --data-font: 14px;
+    --text-color: #1e293b;
     --white: #ffffff;
-    --accent-color: #00AEEF;
     --alert-color: #FF6B6B;
 }
 
 body {
     background-color: var(--bg-body);
     height: 100vh;
-    font-family: var(--body-font);
+    font-family: var(--inter-font);
     color: var(--primary-color);
     animation: fadeIn 2s ease-in-out;
 }
@@ -29,7 +28,10 @@ body {
 .box-container {
     max-width: 1350px;
     margin: auto;
-    padding: 20px 40px;
+}
+
+a {
+    text-decoration: none;
 }
 
 /*******************************/
@@ -37,6 +39,7 @@ body {
 /*******************************/
 .header {
     margin-bottom: 50px;
+    padding: 20px 40px;
     background: linear-gradient(to right, #0f172a, #1e3a8a);
     display: flex;
     flex-wrap: wrap;
@@ -47,7 +50,7 @@ body {
 
 .logo h1 {
     color: var(--white);
-    font-family: var(--heading-font);
+    font-family: var(--poppins-font);
     font-size: 24px;
     font-weight: 700;
 }
@@ -55,7 +58,7 @@ body {
 .search-input {
     padding: 8px 10px;
     border-radius: 12px;
-    font-family: var(--heading-font);
+    font-family: var(--poppins-font);
     font-size: 16px;
     transition: all 0.3s ease;
 }
@@ -68,7 +71,7 @@ body {
 #search-button {
     background-color: #055E85;
     color: var(--white);
-    font-family: var(--heading-font);
+    font-family: var(--poppins-font);
     font-size: 16px;
     font-weight: 500;
     padding: 5px 10px;
@@ -87,7 +90,7 @@ body {
 #current-location-button {
     background-color: #055E85;
     color: var(--white);
-    font-family: var(--heading-font);
+    font-family: var(--poppins-font);
     font-size: 16px;
     font-weight: 500;
     border: 2px solid var(--white);
@@ -109,23 +112,20 @@ body {
 /*****2.Weather-section-lg******/
 /*******************************/
 .weather {
-    background-color: var(--white);
     border-radius: 20px;
     display: grid;
     grid-template-columns: 40% 60%;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     animation: fadeInUp 1s ease-in-out;
-    border: 5px solid red;
 }
 
 .right-panel {
     background-color: #D0E7F5;
-    padding: 1rem;
-    border-radius: 16px;
     animation: scaleIn 1s ease-in-out;
 }
 
 .left-panel {
+    background-color: var(--left-panel-bg);
     text-align: center;
 }
 
@@ -269,15 +269,27 @@ body {
 /*******************************/
 .footer {
     margin-top: 50px;
-    background-color: transparent;
-    border: 2px solid black;
+    background-color: #0f172a;
+    padding: 20px 40px;
 }
 
-.footer p {
-    font-size: 14px;
-    font-weight: 400;
+.footer p,
+.footer h1 {
+    font-size: var(--base-font);
+    color: var(--white);
+    font-family: var(--poppins-font);
+    font-weight: 500;
     text-align: center;
-    padding: 40px 0;
+}
+
+.footer h1 {
+    margin-top: 10px;
+}
+
+.footer h1 a {
+    color: #7DA3FC;
+    transition: all 0.3s ease;
+    border-bottom: 2px solid #7DA3FC;
 }
 
 /* css more animation-making */
