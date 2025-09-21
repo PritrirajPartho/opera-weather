@@ -34,6 +34,34 @@ a {
     text-decoration: none;
 }
 
+h1 {
+    font-size: 24px;
+    font-family: var(--poppins-font);
+    font-weight: 700;
+}
+
+h2 {
+    font-size: 18px;
+    font-family: var(--inter-font);
+    font-weight: 500;
+}
+
+h3 {
+    font-size: var(--base-font);
+    font-family: var(--inter-font);
+    font-weight: 500;
+}
+
+p {
+    font-size: var(--data-font);
+    font-family: var(--inter-font);
+    font-weight: 400;
+}
+
+i {
+    font-size: var(--base-font);
+}
+
 /*******************************/
 /*****1.Header-section-lg*******/
 /*******************************/
@@ -51,16 +79,14 @@ a {
 .logo h1 {
     color: var(--white);
     font-family: var(--poppins-font);
-    font-size: 24px;
-    font-weight: 700;
 }
 
 .search-input {
     padding: 8px 10px;
     border-radius: 12px;
     font-family: var(--poppins-font);
-    font-size: 16px;
-    transition: all 0.3s ease;
+    font-size: var(--base-font);
+    transition: all 0.4s ease;
 }
 
 .search-input:focus {
@@ -72,13 +98,13 @@ a {
     background-color: #055E85;
     color: var(--white);
     font-family: var(--poppins-font);
-    font-size: 16px;
+    font-size: var(--base-font);
     font-weight: 500;
     padding: 5px 10px;
     border: 2px solid var(--white);
     border-radius: 12px;
     flex: 1;
-    transition: all 0.3s ease;
+    transition: all 0.4s ease;
     cursor: pointer;
 }
 
@@ -91,7 +117,7 @@ a {
     background-color: #055E85;
     color: var(--white);
     font-family: var(--poppins-font);
-    font-size: 16px;
+    font-size: var(--base-font);
     font-weight: 500;
     border: 2px solid var(--white);
     padding: 5px 10px;
@@ -99,7 +125,7 @@ a {
     display: flex;
     align-items: center;
     gap: 8px;
-    transition: all 0.3s ease;
+    transition: all 0.4s ease;
     cursor: pointer;
 }
 
@@ -112,7 +138,6 @@ a {
 /*****2.Weather-section-lg******/
 /*******************************/
 .weather {
-    border-radius: 20px;
     display: grid;
     grid-template-columns: 40% 60%;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -120,26 +145,24 @@ a {
 }
 
 .right-panel {
+    padding: 20px 40px;
     background-color: #D0E7F5;
     animation: scaleIn 1s ease-in-out;
 }
 
 .left-panel {
+    padding: 20px 40px;
     background-color: var(--left-panel-bg);
     text-align: center;
 }
 
 .left-panel h1,
 .right-panel h1 {
-    font-size: 1.5rem;
-    font-weight: 700;
     animation: pulse 2s infinite ease-in-out;
 }
 
 .left-panel h2,
 .right-panel h2 {
-    font-size: 0.8rem;
-    font-weight: 700;
     animation: pulse 2s infinite ease-in-out;
 }
 
@@ -152,13 +175,7 @@ a {
     padding: 10px 0px;
 }
 
-.temperature-data h1 {
-    font-size: 1.5rem;
-    font-weight: 700;
-}
-
 .temperature-data i {
-    font-size: 2rem;
     color: var(--accent-color);
 }
 
@@ -288,7 +305,7 @@ a {
 
 .footer h1 a {
     color: #7DA3FC;
-    transition: all 0.3s ease;
+    animation: pulse 4s infinite ease-in-out;
     border-bottom: 2px solid #7DA3FC;
 }
 

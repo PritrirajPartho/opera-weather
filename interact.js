@@ -67,9 +67,8 @@ function getWeatherDetails(lat, lon, name, country, state){
         let formattedDate = date.toLocaleDateString("en-GB", options);
         console.log("weather api call",data);
         weatherCard.innerHTML = `  
-                <div class="left-panel">
                     <div class="temperature-data">
-                        <h1 id="city">${name}, ${country}</h1>
+                        <h2 id="city">${name}, ${country}</h2>
                         <h2>${formattedDate}</h2>
                         <h1 id="temperature">${Math.round(temp - 273.15)}&deg;C</h1>
                         <p class="weather-description">
@@ -80,25 +79,24 @@ function getWeatherDetails(lat, lon, name, country, state){
                     <div class="temparature-card-container">
                         <div class="temparature-card">
                             <p><i class="fa-solid fa-temperature-three-quarters"></i> Real Feels</p>
-                            <h1>${Math.round(feels_like-273.15)}&deg;C</h1>
+                            <h2>${Math.round(feels_like-273.15)}&deg;C</h2>
                         </div>
                         <div class="temparature-card">
                             <p><i class="fa-solid fa-droplet"></i> Humidity</p>
-                            <h1>${humidity}%</h1>
+                            <h2>${humidity}%</h2>
                         </div>
                         <div class="temparature-card">
                             <p>
                               <i class="fa-solid fa-gauge-high"></i>
                               pressure
                             </p>
-                            <h1>${pressure} hPa</h1>
+                            <h2>${pressure} hPa</h2>
                         </div>
                         <div class="temparature-card">
                             <p><i class="fa-solid fa-eye"></i> visibility</p>
-                            <h1>${( data.visibility/1000).toFixed(2)} km</h1>
+                            <h2>${( data.visibility/1000).toFixed(2)} km</h2>
                         </div>
                     </div>
-                </div>
         `
     })
     .catch(err => alert(`weather error: ${err}`));
@@ -142,7 +140,7 @@ function getWeatherDetails(lat, lon, name, country, state){
                         <p>${data.list[i].pop * 100}%</p>
                     </div>
                     <p>${data.list[i].wind.speed} km/h</p>
-                    <h1>${(data.list[i].main.temp - 273.15).toFixed(2)}&deg;C</h1>
+                    <h2>${(data.list[i].main.temp - 273.15).toFixed(2)}&deg;C</h2>
                 </div>
             `;
         }
