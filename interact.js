@@ -69,7 +69,7 @@ function getWeatherDetails(lat, lon, name, country, state){
         weatherCard.innerHTML = `  
                     <div class="temperature-data">
                         <h2 id="city">${name}, ${country}</h2>
-                        <h2>${formattedDate}</h2>
+                        <h2 class="date">${formattedDate}</h2>
                         <h1 id="temperature">${Math.round(temp - 273.15)}&deg;C</h1>
                         <p class="weather-description">
                             <img src="https://openweathermap.org/img/wn/${icon}@2x.png" alt="Icon" srcset="">
@@ -77,24 +77,25 @@ function getWeatherDetails(lat, lon, name, country, state){
                         </p>
                     </div>
                     <div class="temparature-card-container">
-                        <div class="temparature-card">
-                            <p><i class="fa-solid fa-temperature-three-quarters"></i> Real Feels</p>
-                            <h2>${Math.round(feels_like-273.15)}&deg;C</h2>
+                        <div class="row">
+                            <h3>Humidity</h3>
+                            <h3>${humidity}<span class="unit">%</span></h3>
                         </div>
-                        <div class="temparature-card">
-                            <p><i class="fa-solid fa-droplet"></i> Humidity</p>
-                            <h2>${humidity}%</h2>
+                        <div class="row">
+                            <h3>Real feel</h3>
+                            <h3>${Math.round(feels_like - 273.15)}<span class="unit">°</span></h3>
                         </div>
-                        <div class="temparature-card">
-                            <p>
-                              <i class="fa-solid fa-gauge-high"></i>
-                              pressure
-                            </p>
-                            <h2>${pressure} hPa</h2>
+                        <div class="row">
+                            <h3>temerature</h3>
+                            <h3>${Math.round(temp_min - 273.15)} / ${Math.round(temp_max - 273.15)}<span class="unit">°</span}</h3>
                         </div>
-                        <div class="temparature-card">
-                            <p><i class="fa-solid fa-eye"></i> visibility</p>
-                            <h2>${( data.visibility/1000).toFixed(2)} km</h2>
+                        <div class="row">
+                            <h3>Pressure</h3>
+                            <h3>${pressure}<span class="unit">mbar</span></h3>
+                        </div>
+                        <div class="row">
+                            <h3>visibility</h3>
+                            <h3>${(data.visibility / 1000)}<span class="unit">km/h</span></h3>
                         </div>
                     </div>
         `

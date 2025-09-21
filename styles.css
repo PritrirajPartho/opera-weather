@@ -62,6 +62,11 @@ i {
     font-size: var(--base-font);
 }
 
+.unit {
+    margin-left: 3px;
+    opacity: 0.9;
+}
+
 /*******************************/
 /*****1.Header-section-lg*******/
 /*******************************/
@@ -151,6 +156,9 @@ i {
 }
 
 .left-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     padding: 20px 40px;
     background-color: var(--left-panel-bg);
     text-align: center;
@@ -161,12 +169,8 @@ i {
     animation: pulse 2s infinite ease-in-out;
 }
 
-.left-panel h2,
-.right-panel h2 {
-    animation: pulse 2s infinite ease-in-out;
-}
-
 .temperature-data {
+    color: var(--white);
     display: flex;
     flex-direction: column;
     gap: 0px 50px;
@@ -175,29 +179,35 @@ i {
     padding: 10px 0px;
 }
 
+.temperature-data .date {
+    margin-top: 16px;
+    margin-bottom: 16px;
+}
+
 .temperature-data i {
     color: var(--accent-color);
 }
 
 .temparature-card-container {
-    margin: 20px 20px;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
+    background: var(--white);
+    color: var(--text-color);
+    margin-top: 30px;
+    padding: 20px;
+    border-radius: 16px;
+    width: 80%;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-.temparature-card {
-    text-align: left;
-    padding: 10px;
-    border-radius: 10px;
-    background: slategray;
+.row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0px;
+    border-bottom: 1px solid var(--text-color);
 }
 
-.temparature-card h1 {
-    font-size: 1.5rem;
-    font-weight: 600;
-    margin-top: 10px;
-    margin-bottom: 10px;
+.row:last-child {
+    border-bottom: none;
 }
 
 .hourly-forecast-container {
