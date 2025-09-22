@@ -66,11 +66,12 @@ function getWeatherDetails(lat, lon, name, country, state){
         // Formatted the date
         let formattedDate = date.toLocaleDateString("en-GB", options);
         console.log("weather api call",data);
+        
         weatherCard.innerHTML = `  
                     <div class="temperature-data">
                         <h2 id="city">${name}, ${country}</h2>
                         <h2 class="date">${formattedDate}</h2>
-                        <h1 id="temperature">${Math.round(temp - 273.15)} <span class="unit">&deg;C</span></h1>
+                        <h1 id="temperature">${Math.round(temp - 273.15)}<span class="unit">&deg;c</span></h1>
                         <p class="weather-description">
                             <img src="https://openweathermap.org/img/wn/${icon}@2x.png" alt="Icon" srcset="">
                            <span> ${getWeatherDescription(main, description)} </span>
@@ -86,7 +87,7 @@ function getWeatherDetails(lat, lon, name, country, state){
                             <h3>${Math.round(feels_like - 273.15)}<span class="unit">°</span></h3>
                         </div>
                         <div class="row">
-                            <h3>temerature</h3>
+                            <h3>temperature</h3>
                             <h3>${Math.round(temp_min - 273.15)} / ${Math.round(temp_max - 273.15)}<span class="unit">°</span}</h3>
                         </div>
                         <div class="row">
@@ -138,10 +139,10 @@ function getWeatherDetails(lat, lon, name, country, state){
                     <p>${formattedTime}</p>
                     <div class="hourly-forecast-data">
                         <img src="https://openweathermap.org/img/wn/${data.list[i].weather[0].icon}@2x.png" alt="Icon">
-                        <p>${data.list[i].pop * 100}%</p>
+                        <p>${data.list[i].pop * 100}<span class="unit">%</span></p>
                     </div>
-                    <p>${data.list[i].wind.speed} km/h</p>
-                    <h2>${(data.list[i].main.temp - 273.15).toFixed(2)}&deg;C</h2>
+                    <h3>${((data.list[i].wind.speed) * 3.6).toFixed(1)}<span class="unit">km/h</span></h3>
+                    <h2>${Math.round(data.list[i].main.temp - 273.15)}<span class="unit">&deg;c</span></h2>
                 </div>
             `;
         }
@@ -155,7 +156,7 @@ function getWeatherDetails(lat, lon, name, country, state){
                     <p>${date.getDate()} ${months[date.getMonth()]},${days[date.getDay()]}</p>
                     <div class="day-forecast-data">
                         <img src="https://openweathermap.org/img/wn/${fiveDaysForecast[i].weather[0].icon}@2x.png" alt="Icon" srcset="">
-                        <h1>${(fiveDaysForecast[i].main.temp-273.15).toFixed(2)}&deg;C</h1>
+                        <h2>${Math.round(fiveDaysForecast[i].main.temp - 273.15)}<span class="unit">&deg;c</span></h2>
                     </div>
                 </div>
             `;

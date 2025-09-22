@@ -19,10 +19,9 @@
 }
 
 body {
-    background-color: var(--bg-body);
     height: 100vh;
     font-family: var(--inter-font);
-    color: var(--primary-color);
+    color: var(--text-color);
     animation: fadeIn 2s ease-in-out;
 }
 
@@ -39,18 +38,21 @@ h1 {
     font-size: 24px;
     font-family: var(--poppins-font);
     font-weight: 700;
+    margin-bottom: 15px;
 }
 
 h2 {
     font-size: 18px;
     font-family: var(--inter-font);
     font-weight: 500;
+    margin-bottom: 15px;
 }
 
 h3 {
     font-size: var(--base-font);
     font-family: var(--inter-font);
     font-weight: 500;
+    margin-bottom: 10px;
 }
 
 p {
@@ -64,7 +66,7 @@ i {
 }
 
 .unit {
-    margin-left: 2px;
+    margin-left: 3px;
     opacity: 0.9;
 }
 
@@ -85,6 +87,7 @@ i {
 .logo h1 {
     color: var(--white);
     font-family: var(--poppins-font);
+    margin-bottom: 0;
 }
 
 .search-input {
@@ -178,11 +181,6 @@ i {
     align-items: center;
 }
 
-.temperature-data .date {
-    margin-top: 16px;
-    margin-bottom: 16px;
-}
-
 .temperature-data i {
     color: var(--accent-color);
 }
@@ -192,7 +190,13 @@ i {
     justify-content: center;
     align-items: center;
     gap: 10px;
-    margin-top: 10px;
+}
+
+.weather-description img {
+    width: 50px;
+    height: 50px;
+    background-color: gainsboro;
+    border-radius: 50%;
 }
 
 .temparature-card-container {
@@ -218,26 +222,25 @@ i {
 }
 
 .hourly-forecast-container {
-    margin: 20px 0px;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: 20px;
+    gap: 15px;
+    margin-bottom: 40px;
 }
 
 .hourly-forecast-card {
-    background-color: slategray;
+    width: 130px;
+    background-color: var(--white);
+    color: var(--text-color);
     padding: 15px;
-    border: 2px solid black;
     border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-.hourly-forecast-card h1 {
-    text-align: center;
-}
-
-.hourly-forecast-card p {
-    text-align: center;
+.hourly-forecast-card h2 {
+    margin-bottom: 0;
 }
 
 .hourly-forecast-data {
@@ -256,25 +259,19 @@ i {
     border-radius: 50%;
 }
 
-.weather-description img {
-    width: 50px;
-    height: 50px;
-    background-color: gainsboro;
-    border-radius: 50%;
-}
-
 .day-based-forecast-container {
-    margin: 20px 0px;
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 15px;
 }
 
 .day-forecast-card {
+    width: 210px;
+    height: 105px;
     background-color: var(--white);
     padding: 15px;
-    border: 2px solid black;
     border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .day-forecast-data {
@@ -282,6 +279,10 @@ i {
     align-items: center;
     gap: 0px 10px;
     margin-top: 15px;
+}
+
+.day-forecast-data h2 {
+    margin-bottom: 0;
 }
 
 .day-forecast-data img {
