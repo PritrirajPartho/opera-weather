@@ -14,6 +14,7 @@
     --data-font: 14px;
     --text-color: #1e293b;
     --white: #ffffff;
+    --secondary-color: #526583;
     --alert-color: #FF6B6B;
 }
 
@@ -63,7 +64,7 @@ i {
 }
 
 .unit {
-    margin-left: 3px;
+    margin-left: 2px;
     opacity: 0.9;
 }
 
@@ -145,27 +146,27 @@ i {
 .weather {
     display: grid;
     grid-template-columns: 40% 60%;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     animation: fadeInUp 1s ease-in-out;
-}
-
-.right-panel {
-    padding: 20px 40px;
-    background-color: #D0E7F5;
-    animation: scaleIn 1s ease-in-out;
 }
 
 .left-panel {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 20px 40px;
+    padding: 30px 40px;
     background-color: var(--left-panel-bg);
     text-align: center;
+    animation: fadeInUp 1s ease-in-out;
 }
 
-.left-panel h1,
-.right-panel h1 {
+.right-panel {
+    padding: 30px 40px;
+    background-color: #D0E7F5;
+    animation: scaleIn 1s ease-in-out;
+}
+
+
+.left-panel h1 {
     animation: pulse 2s infinite ease-in-out;
 }
 
@@ -173,10 +174,8 @@ i {
     color: var(--white);
     display: flex;
     flex-direction: column;
-    gap: 0px 50px;
     justify-content: center;
     align-items: center;
-    padding: 10px 0px;
 }
 
 .temperature-data .date {
@@ -188,10 +187,18 @@ i {
     color: var(--accent-color);
 }
 
+.weather-description {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
 .temparature-card-container {
     background: var(--white);
     color: var(--text-color);
-    margin-top: 30px;
+    margin-top: 40px;
     padding: 20px;
     border-radius: 16px;
     width: 80%;
@@ -203,7 +210,7 @@ i {
     justify-content: space-between;
     align-items: center;
     padding: 8px 0px;
-    border-bottom: 1px solid var(--text-color);
+    border-bottom: 1px solid var(--secondary-color);
 }
 
 .row:last-child {
@@ -247,13 +254,6 @@ i {
     height: 40px;
     background-color: gainsboro;
     border-radius: 50%;
-}
-
-.weather-description {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
 }
 
 .weather-description img {

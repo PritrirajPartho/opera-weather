@@ -70,7 +70,7 @@ function getWeatherDetails(lat, lon, name, country, state){
                     <div class="temperature-data">
                         <h2 id="city">${name}, ${country}</h2>
                         <h2 class="date">${formattedDate}</h2>
-                        <h1 id="temperature">${Math.round(temp - 273.15)}&deg;C</h1>
+                        <h1 id="temperature">${Math.round(temp - 273.15)} <span class="unit">&deg;C</span></h1>
                         <p class="weather-description">
                             <img src="https://openweathermap.org/img/wn/${icon}@2x.png" alt="Icon" srcset="">
                            <span> ${getWeatherDescription(main, description)} </span>
@@ -215,7 +215,7 @@ function getWeatherDescription(main, description){
     if (main === "Clear") {
         return "It's a clear and sunny day!";
     } else if (main === "Clouds") {
-        return `The sky is cloudy`;
+        return `Today the sky is cloudy`;
     } else if (main === "Rain") {
         return `Expect ${description} today, don't forget an umbrella!`;
     } else if (main === "Snow") {
