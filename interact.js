@@ -87,7 +87,7 @@ function getWeatherDetails(lat, lon, name, country, state){
                             <h3>${Math.round(feels_like - 273.15)}<span class="unit">°</span></h3>
                         </div>
                         <div class="row">
-                            <h3>temperature</h3>
+                            <h3>Temperature</h3>
                             <h3>${Math.round(temp_min - 273.15)} / ${Math.round(temp_max - 273.15)}<span class="unit">°</span}</h3>
                         </div>
                         <div class="row">
@@ -95,7 +95,7 @@ function getWeatherDetails(lat, lon, name, country, state){
                             <h3>${pressure}<span class="unit">mbar</span></h3>
                         </div>
                         <div class="row">
-                            <h3>visibility</h3>
+                            <h3>Visibility</h3>
                             <h3>${(data.visibility / 1000)}<span class="unit">km/h</span></h3>
                         </div>
                     </div>

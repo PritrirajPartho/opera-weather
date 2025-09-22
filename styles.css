@@ -65,6 +65,10 @@ i {
     font-size: var(--base-font);
 }
 
+.title-gap {
+    margin-left: 10px;
+}
+
 .unit {
     margin-left: 3px;
     opacity: 0.9;
@@ -268,6 +272,7 @@ i {
 .day-forecast-card {
     width: 210px;
     height: 105px;
+    color: var(--text-color);
     background-color: var(--white);
     padding: 15px;
     border-radius: 10px;
@@ -312,6 +317,7 @@ i {
 
 .footer h1 {
     margin-top: 10px;
+    margin-bottom: 0;
 }
 
 .footer h1 a {
