@@ -17,6 +17,7 @@ const hourlyForecastContainer = document.querySelector('.hourly-forecast-contain
 function getWeatherDetails(lat, lon, name, country, state){  
 
     let weather_api_url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}`; 
+    // let weather_api_url = `https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&appid=${apiKey}`;
 
     let forcast_api_url = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}`; 
     
@@ -49,9 +50,11 @@ function getWeatherDetails(lat, lon, name, country, state){
     fetch(weather_api_url)
     .then(response => response.json())
     .then(data => {
-        let{name, dt, timezone} = data;
+        let{name, dt} = data;
         let{temp, humidity, pressure, feels_like, temp_min, temp_max} = data.main;
-        let{country, sunrise, sunset, id} = data.sys;
+        let{country, id} = data.sys;
+        const { sunrise, sunset } = data.sys;
+        const { timezone } = data;
         let{speed, deg, gust} = data.wind;
         let{main, description, icon} = data.weather[0];  
 
@@ -65,8 +68,9 @@ function getWeatherDetails(lat, lon, name, country, state){
         };
         // Formatted the date
         let formattedDate = date.toLocaleDateString("en-GB", options);
-        console.log("weather api call",data);
-        
+        // response in console
+        console.log("Sunrise:", formatTime(sunrise));
+        console.log("Sunset:", formatTime(sunset));
         weatherCard.innerHTML = `  
                     <div class="temperature-data">
                         <h2 id="city">${name}, ${country}</h2>
@@ -99,6 +103,16 @@ function getWeatherDetails(lat, lon, name, country, state){
                             <h3>${(data.visibility / 1000)}<span class="unit">km/h</span></h3>
                         </div>
                     </div>
+                    <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+                        <path id="sunPath" d="M 50 150 Q 200 20, 350 150" stroke="#1e293b" stroke-width="2" fill="none" />
+                        <circle r="12" fill="yellow">
+                            <animateMotion dur="5s" repeatCount="indefinite" rotate="auto">
+                                <mpath href="#sunPath" />
+                            </animateMotion>
+                        </circle>
+                        <text x="40" y="180">${formatTime(sunrise)}</text>
+                        <text x="300" y="180">${formatTime(sunset)}</text>
+                    </svg>
         `
     })
     .catch(err => alert(`weather error: ${err}`));
@@ -139,7 +153,7 @@ function getWeatherDetails(lat, lon, name, country, state){
                     <p>${formattedTime}</p>
                     <div class="hourly-forecast-data">
                         <img src="https://openweathermap.org/img/wn/${data.list[i].weather[0].icon}@2x.png" alt="Icon">
-                        <p>${data.list[i].pop * 100}<span class="unit">%</span></p>
+                        <p>${Math.round(data.list[i].pop * 100)}<span class="unit">%</span></p>
                     </div>
                     <h3>${((data.list[i].wind.speed) * 3.6).toFixed(1)}<span class="unit">km/h</span></h3>
                     <h2>${Math.round(data.list[i].main.temp - 273.15)}<span class="unit">&deg;c</span></h2>
@@ -227,3 +241,14 @@ function getWeatherDescription(main, description){
         return `The weather today is ${description} (${main}).`;
     }
 }
+
+// sunrise and sunset function
+function formatTime(unixTimestamp) {
+  return new Date(unixTimestamp * 1000).toLocaleTimeString("en-US", {
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: true
+  });
+}
+
+
