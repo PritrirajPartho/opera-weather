@@ -227,10 +227,12 @@ i {
 
 /* svg for sunrise and sunset */
 svg {
-    width: 400px;
-    height: 200px;
+    max-width: 80%;
+    /* width: 400px; */
+    height: auto;
+    padding: 20px;
     background: var(--white);
-    border-radius: 10px;
+    border-radius: 16px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     margin-top: 20px;
 }
@@ -238,6 +240,7 @@ svg {
 text {
     font-family: var(--inter-font);
     font-size: var(--base-font);
+    font-weight: 500;
     fill: #1e293b;
 }
 

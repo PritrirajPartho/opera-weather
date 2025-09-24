@@ -50,16 +50,14 @@ function getWeatherDetails(lat, lon, name, country, state){
     fetch(weather_api_url)
     .then(response => response.json())
     .then(data => {
-        let{name, dt} = data;
         let{temp, humidity, pressure, feels_like, temp_min, temp_max} = data.main;
-        let{country, id} = data.sys;
-        const { sunrise, sunset } = data.sys;
-        const { timezone } = data;
+        let{name, dt, timezone} = data;
+        let{country, id, sunrise, sunset} = data.sys;
         let{speed, deg, gust} = data.wind;
         let{main, description, icon} = data.weather[0];  
 
         // date and time conversion
-        let date = new Date((dt + timezone) * 1000);
+        let date = new Date(dt * 1000);
         let options = {
             weekday: "long",
             day: "numeric",
@@ -67,10 +65,10 @@ function getWeatherDetails(lat, lon, name, country, state){
             year: "numeric",
         };
         // Formatted the date
-        let formattedDate = date.toLocaleDateString("en-GB", options);
+        let formattedDate = date.toLocaleDateString("en-BD", options);
         // response in console
-        console.log("Sunrise:", formatTime(sunrise));
-        console.log("Sunset:", formatTime(sunset));
+        console.log("Weather apidata:", data);
+
         weatherCard.innerHTML = `  
                     <div class="temperature-data">
                         <h2 id="city">${name}, ${country}</h2>
@@ -112,6 +110,8 @@ function getWeatherDetails(lat, lon, name, country, state){
                         </circle>
                         <text x="40" y="180">${formatTime(sunrise)}</text>
                         <text x="300" y="180">${formatTime(sunset)}</text>
+                        <text x="40" y="200">sunrise</text>
+                        <text x="300" y="200">sunset</text>
                     </svg>
         `
     })
@@ -140,7 +140,7 @@ function getWeatherDetails(lat, lon, name, country, state){
         });
 
         // hourly forecast
-        console.log(data);
+        console.log("forecast api data:", data);
         hourlyForecastContainer.innerHTML = "";
         for (let i = 0; i < 6; i++) {
             let date = new Date(data.list[i].dt_txt);
@@ -244,11 +244,11 @@ function getWeatherDescription(main, description){
 
 // sunrise and sunset function
 function formatTime(unixTimestamp) {
-  return new Date(unixTimestamp * 1000).toLocaleTimeString("en-US", {
-    hour: "2-digit",
-    minute: "2-digit",
-    hour12: true
-  });
+    return new Date(unixTimestamp * 1000).toLocaleTimeString("en-US", {
+        hour: "2-digit",
+        minute: "2-digit",
+        hour12: true
+    });
 }
 
 
