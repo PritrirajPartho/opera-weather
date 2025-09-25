@@ -12,8 +12,7 @@ const fiveDaysForecastContainer = document.querySelector('.day-based-forecast-co
 const hourlyForecastContainer = document.querySelector('.hourly-forecast-container');
 
 
-
-
+// get weather details function****
 function getWeatherDetails(lat, lon, name, country, state){  
 
     let weather_api_url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}`; 
@@ -181,7 +180,7 @@ function getWeatherDetails(lat, lon, name, country, state){
 
 }
 
-
+// get weather function****
 function getWeather(){
     let cityName = searchInput.value.trim().toLowerCase();
     searchInput.value = "";
@@ -197,7 +196,7 @@ function getWeather(){
     .catch(err => alert(`Something went wrong: ${err}`));
 }
 
-
+// get current location function****
 function getCurrentLocation(){
     navigator.geolocation.getCurrentPosition(position => {
         let lat = position.coords.latitude;
@@ -215,7 +214,7 @@ function getCurrentLocation(){
 
 
 
-// all button events or callback
+// all button events or callback functions****
 searchButton.addEventListener('click', getWeather);
 currentLocationButton.addEventListener('click', getCurrentLocation);
 window.addEventListener('load', getCurrentLocation);
@@ -225,7 +224,7 @@ searchInput.addEventListener('keyup', (event) => {
     }
 })
 
-// get dynamic weather message to here adjust with data
+// get dynamic weather message to here adjust with data function****
 function getWeatherDescription(main, description){
     if (main === "Clear") {
         return "It's a clear and sunny day!";
@@ -242,7 +241,7 @@ function getWeatherDescription(main, description){
     }
 }
 
-// sunrise and sunset function
+// sunrise and sunset function****
 function formatTime(unixTimestamp) {
     return new Date(unixTimestamp * 1000).toLocaleTimeString("en-US", {
         hour: "2-digit",

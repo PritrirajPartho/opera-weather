@@ -6,16 +6,16 @@
 
 /* css variables */
 :root {
-    --left-panel-bg: #4a5868;
-    --right-panel-bg: #9bb4c5;
+    --header-footer-bg: #233d4d;
+    --left-panel-bg: #013a63;
+    --right-panel-bg: #014f86;
+    --text-color: #1e293b;
+    --white: #ffffff;
+    --hover-color: #2a6f97;
     --inter-font: "Inter", sans-serif;
     --poppins-font: "Poppins", sans-serif;
     --base-font: 16px;
     --data-font: 14px;
-    --text-color: #1e293b;
-    --white: #ffffff;
-    --secondary-color: #526583;
-    --alert-color: #FF6B6B;
 }
 
 body {
@@ -80,7 +80,7 @@ i {
 .header {
     margin-bottom: 50px;
     padding: 20px 40px;
-    background: linear-gradient(to right, #0f172a, #1e3a8a);
+    background: var(--header-footer-bg);
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -103,12 +103,12 @@ i {
 }
 
 .search-input:focus {
-    box-shadow: 0 0 0 3px #077EB0;
+    box-shadow: 0 0 0 3px var(--hover-color);
     outline: none;
 }
 
 #search-button {
-    background-color: #055E85;
+    background-color: transparent;
     color: var(--white);
     font-family: var(--poppins-font);
     font-size: var(--base-font);
@@ -122,12 +122,12 @@ i {
 }
 
 #search-button:hover {
-    background-color: #077EB0;
+    background-color: var(--hover-color);
     transform: scale(1.05);
 }
 
 #current-location-button {
-    background-color: #055E85;
+    background-color: transparent;
     color: var(--white);
     font-family: var(--poppins-font);
     font-size: var(--base-font);
@@ -143,7 +143,7 @@ i {
 }
 
 #current-location-button:hover {
-    background-color: #077EB0;
+    background-color: var(--hover-color);
     transform: scale(1.05);
 }
 
@@ -168,10 +168,13 @@ i {
 
 .right-panel {
     padding: 30px 40px;
-    background-color: #D0E7F5;
+    background-color: var(--right-panel-bg);
     animation: scaleIn 1s ease-in-out;
 }
 
+.right-panel .forecast-title {
+    color: var(--white);
+}
 
 .left-panel h1 {
     animation: pulse 2s infinite ease-in-out;
@@ -211,6 +214,7 @@ i {
     border-radius: 16px;
     width: 80%;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    animation: scaleIn 1s ease-in-out;
 }
 
 .row {
@@ -322,7 +326,7 @@ text {
 /*******************************/
 .footer {
     margin-top: 50px;
-    background-color: #0f172a;
+    background-color: var(--header-footer-bg);
     padding: 20px 40px;
 }
 
