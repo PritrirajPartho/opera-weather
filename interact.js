@@ -13,10 +13,9 @@ const hourlyForecastContainer = document.querySelector('.hourly-forecast-contain
 
 
 // get weather details function****
-function getWeatherDetails(lat, lon, name, country, state){  
+function getWeatherDetails(lat, lon){  
 
     let weather_api_url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}`; 
-    // let weather_api_url = `https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&appid=${apiKey}`;
 
     let forcast_api_url = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${apiKey}`; 
     
@@ -180,8 +179,8 @@ function getWeatherDetails(lat, lon, name, country, state){
 
 }
 
-// get weather function****
-function getWeather(){
+// get weather by input city funtion****
+function inputCityToWeather(){
     let cityName = searchInput.value.trim().toLowerCase();
     searchInput.value = "";
     if(!cityName) return;
@@ -193,7 +192,7 @@ function getWeather(){
         let{lat, lon} = data.coord;
         getWeatherDetails( lat, lon);
     })
-    .catch(err => alert(`Something went wrong: ${err}`));
+    .catch(err => alert(`getweatherbycity error: ${err}`));
 }
 
 // get current location function****
@@ -205,22 +204,52 @@ function getCurrentLocation(){
         fetch(reverse_geocoding_api_url)
         .then(response => response.json())
         .then(data => {
-          let{lat, lon, name, country, state} = data[0];
-          getWeatherDetails(lat, lon, name, country, state);
+          let{lat, lon} = data[0];
+          getWeatherDetails(lat, lon);
         })
-        .catch(err => alert(`Something went wrong: ${err}`));
+        .catch(err => alert(`getcurrentlocation error: ${err}`));
     })
 }
 
+// getcitybyip and set lat,lot in these functions****
+function getCityByIP() {
+    fetch("https://ipinfo.io/json?token=32db6b8865d791")
+    .then(response => response.json())
+    .then(data => {
+        console.log("IP Location:", data);
+        if (data.city) {
+            ipCityToWeather(data.city);
+        }
+        else{
+            getCurrentLocation();
+        }
+    })
+    .catch(err => {
+        console.error("IP location error:", err);
+        getCurrentLocation();
+    });
+}
+
+
+function ipCityToWeather(cityName) {
+    let geocoding_api_url = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}`;
+    fetch(geocoding_api_url)
+    .then(response => response.json())
+    .then(data => {
+        let { lat, lon } = data.coord;
+        getWeatherDetails(lat, lon);
+    })
+    .catch(err => console.error(`City by ip weather fetch error: ${err}`));
+}
 
 
 // all button events or callback functions****
-searchButton.addEventListener('click', getWeather);
+searchButton.addEventListener('click',inputCityToWeather);
 currentLocationButton.addEventListener('click', getCurrentLocation);
-window.addEventListener('load', getCurrentLocation);
+window.addEventListener('DOMContentLoaded', getCityByIP);
 searchInput.addEventListener('keyup', (event) => {
     if (event.key === "Enter") {
-        getWeather();
+        inputCityToWeather();
     }
 })
 
